@@ -25,8 +25,8 @@ discord = oauth.register(
     client_secret="pdOQZ4h_NcAgq0n6BXAD6iSjejJviqIB",
     access_token_url='https://discord.com/api/oauth2/token',
     authorize_url='https://discord.com/api/oauth2/authorize',
-    authorize_params="id",
-    client_kwargs={'scope': 'identify email'},
+    authorize_params=None,
+    client_kwargs={'scope': 'identify'},
     userinfo_endpoint='https://discord.com/api/users/@me',
     redirect_uri="http://109.237.99.125:5000/",
 )
