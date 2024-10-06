@@ -3,10 +3,31 @@ import os
 
 from flask import Flask, render_template, request, jsonify, session
 from flask_cors import CORS
+import sqlite3
 
 app = Flask(__name__)
 CORS(app)
 app.secret_key = os.urandom(24)
+
+db = sqlite3.connect('data.db')
+
+def create_db():
+    cur.execute("CREATE TABLE Users(name UNIQUE, password VARCHAR, role STRING)")
+
+
+def create_profile(loginUser, passwordUser):
+    data = [(loginUser, passwordUser, "user"), ]
+    cur.executemany("INSERT INTO Users VALUES(?, ?, ?)", data)
+    con.commit()
+
+
+if not os.path.exists('Miki.db'):
+    con = sqlite3.connect("Miki.db")
+    cur = con.cursor()
+    create_db()
+else:
+    con = sqlite3.connect("Miki.db")
+    cur = con.cursor()
 
 login = {
     "213": "123",
@@ -28,7 +49,7 @@ def index1():
             return jsonify(request1)
     return jsonify({"code": 403})
 
-@app.route('/servers', methods=['get'])
+@app.route('/servers', methods=['GET'])
 def servers():
     try:
         print(session['data'])
@@ -36,9 +57,14 @@ def servers():
             if  session['data']["password"] == login[session['data']["login"]]:
                 return render_template("servers.html")
     except Exception as e:
-        return f"<h1>{e}</h1>"
+        print(e)
+        return f"<h1>403</h1>"
 
+@app.route('/servers', methods=['POST'])
+def servers1():
+    request1 = json.loads(request.data.decode("utf-8"))
 
+    return jsonify(request1)
 
 
 
