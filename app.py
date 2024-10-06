@@ -37,7 +37,7 @@ def servers():
                 session['data'] = session
                 return render_template("servers.html")
     except:
-        return "<h1></h1>"
+        return "<h1>403</h1>"
 
 
 
