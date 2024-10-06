@@ -20,11 +20,6 @@ def create_profile(loginUser, passwordUser):
     cur.executemany("INSERT INTO Users VALUES(?, ?, ?)", data)
     con.commit()
 
-def get_users():
-    cur.execute("SELECT * FROM Users")
-    result = cur.fetchone()
-    return result
-
 
 if not os.path.exists('data.db'):
     con = sqlite3.connect("data.db")
@@ -57,8 +52,10 @@ def index1():
 @app.route('/servers', methods=['GET'])
 def servers():
     try:
+        cur.execute("SELECT * FROM Users")
+        result = cur.fetchone()
+        print(result)
         print(session['data'])
-        print(get_users())
         if session['data']["login"] in login.keys():
             if  session['data']["password"] == login[session['data']["login"]]:
                 return render_template("servers.html")
