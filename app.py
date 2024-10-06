@@ -5,7 +5,7 @@ from flask import Flask, jsonify, render_template, request, redirect
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/data": {"origins": "http://109.237.99.125:5000"}})
 app.secret_key = os.urandom(24)
 
 
