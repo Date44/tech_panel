@@ -1,4 +1,29 @@
-{% extends "base.html" %}
-{% block content %}
-    <h1>hi</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>tech panel</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+<body>
+    <div class="container" id="container">
+            <div class="form-container sign-in-container">
+                <form id="loginForm">
+                    <h1>С возвращением!</h1>
+                    <p class="p-sign-in">Мы так рады видеть вас снова!</p>
+                    <span class="span-sign-in">ЛОГИН<span class="priority-element">*</span></span>
+                    <input id="email" type="text" placeholder="" />
+                    <span class="span-sign-in">ПАРОЛЬ<span class="priority-element">*</span></span>
+                    <input id="password" type="password" placeholder="" />
+                    <br>
+                    <br>
+                    <button type="submit" id="openModalBtn">Вход</button>
+
+                </form>
+            </div>
+        </div>
+
+    <script src="/static/js/base.js"></script>
+</body>
+</html>
