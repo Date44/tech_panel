@@ -48,7 +48,7 @@ def callback():
 def index():
     return render_template("index.html")
 
-@app.route('/data', methods=['GET'])
+@app.route('/data', methods=['POST'])
 def index1():
     list = ["321312", "213213"]
     return list
