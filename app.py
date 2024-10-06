@@ -9,8 +9,6 @@ app = Flask(__name__)
 CORS(app)
 app.secret_key = os.urandom(24)
 
-db = sqlite3.connect('data.db')
-
 def create_db():
     cur.execute("CREATE TABLE Users(name UNIQUE, password VARCHAR, role STRING)")
 
@@ -22,11 +20,11 @@ def create_profile(loginUser, passwordUser):
 
 
 if not os.path.exists('data.db'):
-    con = sqlite3.connect("data.db")
+    con = sqlite3.connect("data.db", check_same_thread=False)
     cur = con.cursor()
     create_db()
 else:
-    con = sqlite3.connect("data.db")
+    con = sqlite3.connect("data.db", check_same_thread=False)
     cur = con.cursor()
 
 login = {
