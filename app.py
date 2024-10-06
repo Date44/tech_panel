@@ -1,25 +1,47 @@
 import os
 
-from authlib.integrations.flask_client import OAuth
-from flask import Flask, url_for, session, jsonify, render_template
+import requests
+from flask import Flask, url_for, session, jsonify, render_template, request, redirect
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 
-oauth = OAuth(app)
-discord = oauth.register(
-    name='discord',
-    client_id="1079473813936414822",
-    client_secret="pdOQZ4h_NcAgq0n6BXAD6iSjejJviqIB",
-    access_token_url='https://discord.com/api/oauth2/token',
-    authorize_url='https://discord.com/api/oauth2/authorize',
-    authorize_params="id",
-    client_kwargs={'scope': 'identify email'},
-    userinfo_endpoint='https://discord.com/api/users/@me',
-    redirect_uri="http://109.237.99.125:5000/",
-)
+CLIENT_ID = '1079473813936414822'
+CLIENT_SECRET = 'pdOQZ4h_NcAgq0n6BXAD6iSjejJviqIB'
+REDIRECT_URI = 'http://109.237.99.125:5000/callback'
+DISCORD_OAUTH_URL = 'https://discord.com/api/oauth2/authorize'
+DISCORD_TOKEN_URL = 'https://discord.com/api/oauth2/token'
+DISCORD_API_URL = 'https://discord.com/api/users/@me'
+SCOPE = 'identify email'
 
+@app.route('/login')
+def login():
+    return redirect(f"{DISCORD_OAUTH_URL}?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&response_type=code&scope={SCOPE}")
+
+
+
+@app.route('/callback', methods=["POST"])
+def callback():
+    code = request.args.get('code')
+    data = {
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET,
+        'grant_type': 'authorization_code',
+        'code': code,
+        'redirect_uri': REDIRECT_URI,
+    }
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    r = requests.post(DISCORD_TOKEN_URL, data=data, headers=headers)
+    r_json = r.json()
+    access_token = r_json['access_token']
+
+    headers = {
+        'Authorization': f'Bearer {access_token}'
+    }
+    user_info = requests.get(DISCORD_API_URL, headers=headers).json()
+
+    return f"Hello, {user_info['username']}#{user_info['discriminator']}! Your email is {user_info['email']}"
 
 
 @app.route('/', methods=['GET'])
@@ -31,21 +53,6 @@ def index1():
     list = ["321312", "213213"]
     return jsonify(list)
 
-@app.route('/login')
-def login():
-    discord = oauth.create_client('discord')
-    redirect_uri = url_for('authorize', _external=True)
-    return discord.authorize_redirect(redirect_uri)
-
-@app.route('/authorize/callback')
-def authorize():
-    discord = oauth.create_client('discord')
-    token = discord.authorize_access_token()
-    user = discord.get('https://discord.com/api/users/@me').json()
-
-    session['discord_user'] = user
-
-    return jsonify(user)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=False)
