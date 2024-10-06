@@ -1,15 +1,12 @@
 import json
-import os
-
-from flask import Flask, render_template, request, jsonify, session
-from flask_cors import CORS
-import sqlite3
 
 from flask import Flask, render_template, redirect, url_for, flash
-from models import db, User
-from forms import RegistrationForm, LoginForm
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask import request, jsonify
+from flask_cors import CORS
+from flask_login import LoginManager, login_user, logout_user, login_required
 
+from forms import LoginForm
+from models import db, User
 
 app = Flask(__name__)
 CORS(app)
@@ -19,7 +16,7 @@ db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-login_manager.login_message = ""
+login_manager.login_message = None
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -37,10 +34,9 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.password == form.password.data:
             login_user(user)
-            flash('You have been logged in!', 'success')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('servers'))
         else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
+            pass
     return render_template('login.html', form=form)
 
 
