@@ -50,6 +50,7 @@ def logout():
 
 
 @app.route('/servers', methods=['GET'])
+@login_required
 async def servers():
     return render_template("servers.html")
 
