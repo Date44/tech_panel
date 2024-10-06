@@ -18,7 +18,7 @@ body {
     align-items: center;
 
     font-family: 'gg sans';
-    background-image: url(/static/background.svg);
+    /*background-image: url(/static/background.svg);*/
     background-size: 100% 100%;
     background-position: auto center;
     background-repeat: no-repeat;
