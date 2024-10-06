@@ -28,14 +28,14 @@ discord = oauth.register(
     authorize_params=None,
     client_kwargs={'scope': 'identify'},
     userinfo_endpoint='https://discord.com/api/users/@me',
-    redirect_uri="http://109.237.99.125:5000/",
+    redirect_uri="http://109.237.99.125:5000/callback",
 )
 @app.route('/login')
 def login():
     discord = oauth.create_client('discord')
     redirect_uri = url_for('authorize', _external=True)
     return discord.authorize_redirect(redirect_uri)
-@app.route('/authorize/callback')
+@app.route('/callback')
 def authorize():
     discord = oauth.create_client('discord')
     token = discord.authorize_access_token()
