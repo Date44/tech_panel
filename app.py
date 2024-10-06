@@ -30,7 +30,7 @@ def index1():
 
 @app.route('/servers', methods=['get'])
 def servers():
-    if session in None:
+    if session == None:
         return "<h1>403</h1>"
     elif session["login"] in login.keys():
         if  session["password"] == login[session["login"]]:
