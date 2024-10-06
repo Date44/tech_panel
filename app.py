@@ -36,11 +36,11 @@ login = {
 }
 
 @app.route('/', methods=['GET'])
-def index():
+async def index():
     return render_template("index.html")
 
 @app.route('/login', methods=['POST'])
-def index1():
+async def index1():
     request1 = json.loads(request.data.decode("utf-8"))
     if request1["login"] in login.keys():
         if  request1["password"] == login[request1["login"]]:
@@ -50,7 +50,7 @@ def index1():
     return jsonify({"code": 403})
 
 @app.route('/servers', methods=['GET'])
-def servers():
+async def servers():
     try:
         cur.execute("SELECT * FROM Users")
         result = cur.fetchone()
