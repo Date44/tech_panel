@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="/static/css/base.css">
 </head>
 <body>
+
+    <div class="container" id="container">
     <nav>
         <a href="{{ url_for('login') }}">Login</a> |
         <a href="{{ url_for('logout') }}">Logout</a>
     </nav>
-    <div class="container" id="container">
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <ul>
