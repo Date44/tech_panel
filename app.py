@@ -23,7 +23,7 @@ def index1():
     request1 = json.loads(request.data.decode("utf-8"))
     print(request1)
     if request1["login"] in login.keys():
-        if  request1["login"] == login[request1["login"]]:
+        if  request1["password"] == login[request1["login"]]:
             request1["code"] = 200
             return jsonify(request1)
     return jsonify({"code": 403})
