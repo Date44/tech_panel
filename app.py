@@ -30,15 +30,14 @@ def index1():
 
 @app.route('/servers', methods=['get'])
 def servers():
-    print(session)
-    if session:
-        return "<h1>403</h1>"
-    elif session["login"] in login.keys():
-        if  session["password"] == login[session["login"]]:
-            session["code"] = 200
-            session['data'] = session
-            return render_template("servers.html")
-
+    try:
+        if session["login"] in login.keys():
+            if  session["password"] == login[session["login"]]:
+                session["code"] = 200
+                session['data'] = session
+                return render_template("servers.html")
+    except:
+        return "<h1></h1>"
 
 
 
