@@ -1,7 +1,8 @@
 import os
 
 import requests
-from flask import Flask, jsonify, render_template, request, redirect
+from authlib.integrations.flask_client import OAuth
+from flask import Flask, url_for, session, jsonify, render_template
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -17,32 +18,30 @@ DISCORD_TOKEN_URL = 'https://discord.com/api/oauth2/token'
 DISCORD_API_URL = 'https://discord.com/api/users/@me'
 SCOPE = 'identify'
 
-@app.route('/login', methods=['POST'])
+oauth = OAuth(app)
+discord = oauth.register(
+    name='discord',
+    client_id="1079473813936414822",
+    client_secret="pdOQZ4h_NcAgq0n6BXAD6iSjejJviqIB",
+    access_token_url='https://discord.com/api/oauth2/token',
+    authorize_url='https://discord.com/api/oauth2/authorize',
+    authorize_params="id",
+    client_kwargs={'scope': 'identify email'},
+    userinfo_endpoint='https://discord.com/api/users/@me',
+    redirect_uri="http://109.237.99.125:5000/",
+)
+@app.route('/login')
 def login():
-    return redirect(f"{DISCORD_OAUTH_URL}?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&response_type=code&scope={SCOPE}")
-
-@app.route('/callback')
-def callback():
-    code = request.args.get('code')
-    data = {
-        'client_id': CLIENT_ID,
-        'client_secret': CLIENT_SECRET,
-        'grant_type': 'authorization_code',
-        'code': code,
-        'redirect_uri': REDIRECT_URI,
-    }
-    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-    r = requests.post(DISCORD_TOKEN_URL, data=data, headers=headers)
-    r_json = r.json()
-    access_token = r_json['access_token']
-
-    headers = {
-        'Authorization': f'Bearer {access_token}'
-    }
-    user_info = requests.get(DISCORD_API_URL, headers=headers).json()
-    print(user_info)
-    return f"Hello, {user_info['username']}#{user_info['discriminator']}! Your email is {user_info['email']}"
-
+    discord = oauth.create_client('discord')
+    redirect_uri = url_for('authorize', _external=True)
+    return discord.authorize_redirect(redirect_uri)
+@app.route('/authorize/callback')
+def authorize():
+    discord = oauth.create_client('discord')
+    token = discord.authorize_access_token()
+    user = discord.get('https://discord.com/api/users/@me').json()
+    session['discord_user'] = user
+    return jsonify(user)
 
 @app.route('/', methods=['GET'])
 def index():
