@@ -19,9 +19,7 @@ SCOPE = 'identify'
 def login():
     return redirect(f"{DISCORD_OAUTH_URL}?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&response_type=code&scope={SCOPE}")
 
-
-
-@app.route('/callback', methods=["POST"])
+@app.route('/callback')
 def callback():
     code = request.args.get('code')
     data = {
