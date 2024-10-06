@@ -17,7 +17,7 @@ discord = oauth.register(
     authorize_params=None,
     client_kwargs={'scope': 'identify email'},
     userinfo_endpoint='https://discord.com/api/users/@me',
-    redirect_uri="http://109.237.99.125:5000/authorize/callback",
+    redirect_uri="http://109.237.99.125:5000/",
 )
 
 
