@@ -38,7 +38,7 @@ def callback():
         'Authorization': f'Bearer {access_token}'
     }
     user_info = requests.get(DISCORD_API_URL, headers=headers).json()
-
+    print(user_info)
     return f"Hello, {user_info['username']}#{user_info['discriminator']}! Your email is {user_info['email']}"
 
 
