@@ -16,8 +16,10 @@ CORS(app)
 app.config.from_object('config.Config')
 db.init_app(app)
 
-login_manager = LoginManager(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 login_manager.login_view = 'login'
+login_manager.login_message = ""
 
 @login_manager.user_loader
 def load_user(user_id):
