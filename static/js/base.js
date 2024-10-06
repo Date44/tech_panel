@@ -9,7 +9,7 @@ document.querySelector('#loginForm').onsubmit = async (e) => {
     })
         let data = await response.json()
     if (data.status === 200) {
-        location.replace("2fa")
+        location.replace("servers")
     }
 }
 
