@@ -29,6 +29,7 @@ def index1():
 
 @app.route('/servers', methods=['get'])
 def servers():
+    print(request.data.decode("utf-8"))
     return render_template("servers.html")
 
 
