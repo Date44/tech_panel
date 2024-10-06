@@ -26,12 +26,12 @@ def get_users():
     print(result)
 
 
-if not os.path.exists('Miki.db'):
-    con = sqlite3.connect("Miki.db")
+if not os.path.exists('data.db'):
+    con = sqlite3.connect("data.db")
     cur = con.cursor()
     create_db()
 else:
-    con = sqlite3.connect("Miki.db")
+    con = sqlite3.connect("data.db")
     cur = con.cursor()
 
 login = {
