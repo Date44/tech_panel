@@ -1,7 +1,7 @@
 import json
 import os
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -24,12 +24,13 @@ def index1():
     if request1["login"] in login.keys():
         if  request1["password"] == login[request1["login"]]:
             request1["code"] = 200
+            session['data'] = request1
             return jsonify(request1)
     return jsonify({"code": 403})
 
 @app.route('/servers', methods=['get'])
 def servers():
-    print(request.data.decode("utf-8"))
+    print(session['data'])
     return render_template("servers.html")
 
 
