@@ -20,6 +20,11 @@ def create_profile(loginUser, passwordUser):
     cur.executemany("INSERT INTO Users VALUES(?, ?, ?)", data)
     con.commit()
 
+def get_users():
+    cur.execute("SELECT * FROM Users")
+    result = cur.fetchone()
+    print(result)
+
 
 if not os.path.exists('Miki.db'):
     con = sqlite3.connect("Miki.db")
