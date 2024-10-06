@@ -19,6 +19,7 @@ def index():
 def index1():
     request1 = json.loads(request.data.decode("utf-8"))
     print(request1)
+    return request1
 
 
 
