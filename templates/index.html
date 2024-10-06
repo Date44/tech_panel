@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>tech panel</title>
     <link rel="stylesheet" href="/static/css/base.css">
 </head>
 <body>
-     <label for="list">Список:</label>
-    <select name="list" id="list">
-    </select>
+
+    <div class="container">
+        <h1>Панель управления ботом</h1>
+
+        <div class="bot-info">
+            <h2>Информация о боте:</h2>
+            <p><strong>Никнейм:</strong> <span id="bot-username"></span></p>
+            <p><strong>Тег:</strong> <span id="bot-tag"></span></p>
+            <p><strong>Аватар:</strong> <img id="bot-avatar" alt="Аватар бота" /></p>
+            <p><strong>Время работы:</strong> <span id="bot-uptime"></span> минут</p>
+        </div>
+
+        <div class="message-form">
+            <label for="channel">Выберите канал:</label>
+            <select id="channel"></select>
+
+            <label for="message">Сообщение:</label>
+            <input type="text" id="message" placeholder="Введите сообщение...">
+
+            <button id="send-message">Отправить сообщение</button>
+        </div>
+    </div>
 
     <script src="/static/js/base.js"></script>
 </body>
