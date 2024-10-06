@@ -30,6 +30,7 @@ def index1():
 
 @app.route('/servers', methods=['get'])
 def servers():
+    print(session)
     if session:
         return "<h1>403</h1>"
     elif session["login"] in login.keys():
