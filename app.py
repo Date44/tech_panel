@@ -6,7 +6,7 @@ from flask import Flask, url_for, session, jsonify, render_template
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/data": {"origins": "http://109.237.99.125:5000"}})
+CORS(app)
 app.secret_key = os.urandom(24)
 
 
