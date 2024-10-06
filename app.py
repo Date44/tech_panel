@@ -1,10 +1,7 @@
 import json
 import os
-from http.client import responses
 
-import requests
-from authlib.integrations.flask_client import OAuth
-from flask import Flask, url_for, session, jsonify, render_template, request
+from flask import Flask, render_template, request
 from flask_cors import CORS
 
 app = Flask(__name__)
