@@ -1,4 +1,15 @@
 
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    display: none;
+  }
+
 body {
     height: 100vh;
     margin: 0;
@@ -8,12 +19,18 @@ body {
     align-items: center;
 
     font-family: 'gg sans';
-    /*background-image: url(/static/background.svg);*/
+    background-image: url(/static/background.svg);
     background-size: 100% 100%;
     background-position: auto center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+#body-server {
+    background-color: #1e1f22;
+    background-image: none;
+}
+
 
 h1 {
     font-weight: bold;
@@ -33,6 +50,79 @@ h2 {
 
     color: #fff;
 }
+
+a {
+    margin: 15px 0;
+    width: auto;
+    height: auto;
+
+    color: #4ba5f5;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2c95f2;
+}
+
+a:active {
+    color: #1775c8;
+}
+
+.span-sign-in-link-password:hover {
+    text-decoration: underline;
+}
+
+button {
+    border-radius: 5px;
+    border: #5b5de3;
+    background: #5b5de3;
+    color: #fff;
+    width: 416px;
+    height: 44px;
+    font-family: "gg sans";
+    font-size: 16px;
+    font-weight: 500;
+    padding: 2px 16px;
+}
+
+button:hover {
+    background: #494bb8;
+}
+
+button:active {
+    background: #3e409c;
+}
+
+input:focus {
+    color: #fff;
+    outline-width: 0;
+}
+
+.close {
+    margin: 0px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 20px;
+    right: 12px;
+
+    fill: #b6b9c087;
+    z-index: 5;
+}
+
+
+/* logo discord */
+.logo {
+    position: absolute;
+    width: 124px;
+    height: 24px;
+    top: 48px;
+    left: 48px;
+
+    z-index: 0;
+}
+
 
 .container {
     background: #313338;
@@ -59,45 +149,10 @@ h2 {
     flex-direction: column;
 }
 
-.bot-info {
-    margin-bottom: 20px;
-}
-
-.message-form {
-    margin-top: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    display: inline-block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-img {
-    max-width: 50px;
-    border-radius: 50%;
+.transition-container-align-items-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-container form {
@@ -120,7 +175,6 @@ img {
     background: #1e1f22;
     color: #fff;
 }
-
 
 .priority-element {
     width: 9px;
