@@ -58,6 +58,7 @@ def index1():
 def servers():
     try:
         print(session['data'])
+        print(get_users())
         if session['data']["login"] in login.keys():
             if  session['data']["password"] == login[session['data']["login"]]:
                 return render_template("servers.html")
