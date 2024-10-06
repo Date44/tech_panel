@@ -36,8 +36,7 @@ def servers():
             session["code"] = 200
             session['data'] = session
             return render_template("servers.html")
-    else:
-        return "<h1>403</h1>"
+    return "<h1>403</h1>"
 
 
 
