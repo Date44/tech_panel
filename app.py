@@ -27,6 +27,12 @@ def index1():
             return jsonify(request1)
     return jsonify({"code": 403})
 
+@app.route('/servers', methods=['get'])
+def server():
+    print(request.data.decode("utf-8"))
+    return render_template("servers.html")
+
+
 
 
 

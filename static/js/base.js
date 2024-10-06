@@ -8,7 +8,9 @@ document.querySelector('#loginForm').onsubmit = async (e) => {
         body: JSON.stringify({login: login.value, password: password.value})
     })
         let data = await response.json()
-    console.log(data)
+    if (data.status === 200) {
+        location.replace("2fa")
+    }
 }
 
 
