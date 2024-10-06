@@ -1,7 +1,7 @@
 import json
 import os
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, requestm, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -15,8 +15,8 @@ def index():
 @app.route('/login', methods=['POST'])
 def index1():
     request1 = json.loads(request.data.decode("utf-8"))
-    print(request1)
-    return request1
+
+    return jsonify(request1)
 
 
 
