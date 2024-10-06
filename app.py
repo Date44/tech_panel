@@ -8,6 +8,12 @@ app = Flask(__name__)
 CORS(app)
 app.secret_key = os.urandom(24)
 
+login = {
+    "213": "123",
+    "Date44": "ttt",
+    "kot_gay": "21312"
+}
+
 @app.route('/', methods=['GET'])
 def index():
     return render_template("index.html")
@@ -16,6 +22,8 @@ def index():
 def index1():
     request1 = json.loads(request.data.decode("utf-8"))
     print(request1)
+    if request1["login"] in login.keys():
+        print(login[request1["login"]])
     return jsonify(request1)
 
 
