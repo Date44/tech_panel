@@ -15,7 +15,7 @@ def index():
 @app.route('/login', methods=['POST'])
 def index1():
     request1 = json.loads(request.data.decode("utf-8"))
-
+    print(request1)
     return jsonify(request1)
 
 
