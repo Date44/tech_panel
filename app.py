@@ -49,7 +49,7 @@ def index():
 @app.route('/data', methods=['POST'])
 def index1():
     list = ["321312", "213213"]
-    return jsonify(list)
+    return list
 
 
 if __name__ == "__main__":
