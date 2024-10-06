@@ -2,7 +2,7 @@ import os
 
 import requests
 from flask import Flask, jsonify, render_template, request, redirect
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, resources={r"/data": {"origins": "http://109.237.99.125:5000"}})
@@ -51,7 +51,7 @@ def index():
 @app.route('/data', methods=['POST'])
 def index1():
     list = ["321312", "213213"]
-    return jsonify({"data": list})
+    return list
 
 
 if __name__ == "__main__":
