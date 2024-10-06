@@ -13,7 +13,7 @@ REDIRECT_URI = 'http://109.237.99.125:5000/callback'
 DISCORD_OAUTH_URL = 'https://discord.com/api/oauth2/authorize'
 DISCORD_TOKEN_URL = 'https://discord.com/api/oauth2/token'
 DISCORD_API_URL = 'https://discord.com/api/users/@me'
-SCOPE = 'identify email'
+SCOPE = 'identify'
 
 @app.route('/login')
 def login():
