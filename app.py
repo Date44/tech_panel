@@ -23,7 +23,7 @@ def create_profile(loginUser, passwordUser):
 def get_users():
     cur.execute("SELECT * FROM Users")
     result = cur.fetchone()
-    print(result)
+    return result
 
 
 if not os.path.exists('data.db'):
