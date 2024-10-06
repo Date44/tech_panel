@@ -1,7 +1,7 @@
 import os
 
 import requests
-from flask import Flask, url_for, session, jsonify, render_template, request, redirect
+from flask import Flask, jsonify, render_template, request, redirect
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -15,7 +15,7 @@ DISCORD_TOKEN_URL = 'https://discord.com/api/oauth2/token'
 DISCORD_API_URL = 'https://discord.com/api/users/@me'
 SCOPE = 'identify'
 
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
     return redirect(f"{DISCORD_OAUTH_URL}?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&response_type=code&scope={SCOPE}")
 
