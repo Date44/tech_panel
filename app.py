@@ -34,7 +34,6 @@ def servers():
         print(session['data'])
         if session['data']["login"] in login.keys():
             if  session['data']["password"] == login[session['data']["login"]]:
-                session['data'] = session['data']
                 return render_template("servers.html")
     except Exception as e:
         return f"<h1>{e}</h1>"
