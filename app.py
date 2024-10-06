@@ -34,11 +34,10 @@ def servers():
         print(session['data'])
         if session["login"] in login.keys():
             if  session["password"] == login[session["login"]]:
-                session["code"] = 200
                 session['data'] = session
                 return render_template("servers.html")
-    except:
-        return "<h1>403</h1>"
+    except Exception as e:
+        return f"<h1>{e}</h1>"
 
 
 
