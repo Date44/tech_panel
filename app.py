@@ -46,17 +46,8 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for(''))
 
-# @app.route('/login', methods=['POST'])
-# async def index1():
-#     request1 = json.loads(request.data.decode("utf-8"))
-#     if request1["login"] in login.keys():
-#         if  request1["password"] == login[request1["login"]]:
-#             request1["code"] = 200
-#             session['data'] = request1
-#             return jsonify(request1)
-#     return jsonify({"code": 403})
 
 @app.route('/servers', methods=['GET'])
 async def servers():
