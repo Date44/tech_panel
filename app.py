@@ -51,7 +51,6 @@ def edit_user(user_id):
         user.username = request.form['username']
         user.role = request.form['role']
         db.session.commit()
-        flash("User updated successfully!", "success")
         return redirect(url_for('users'))
     return render_template('edit_user.html', user=user, roles=roles)
 
