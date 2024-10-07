@@ -31,15 +31,6 @@ td, th, label {
     text-align: center;
 }
 
-input {
-    min-width: 10px;
-    max-width: 100vw;
-    min-height: 10px;
-    max-height: 100vw;
-    color: white;
-    text-align: center;
-}
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -221,8 +212,10 @@ input:focus {
     border-radius: 5px;
     border: none;
     padding: 12px 15px;
-    width: 416px;
-    height: 40px;
+    min-width: 10px;
+    max-width: 100vw;
+    min-height: 40px;
+    max-height: 100vw;
 
     background: #1e1f22;
     color: #fff;
