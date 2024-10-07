@@ -341,7 +341,7 @@ input:focus {
 .button-change {
     min-width: 48px;
     max-width: 100vw;
-    min-height: 122px;
+    min-height: 12px;
     max-height: 100vw;
     margin-top: 24px;
 }
