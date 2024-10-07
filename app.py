@@ -12,7 +12,8 @@ app = Flask(__name__)
 CORS(app)
 app.config.from_object('config.Config')
 db.init_app(app)
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 login_manager = LoginManager()
 login_manager.init_app(app)
