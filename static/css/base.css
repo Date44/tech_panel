@@ -25,6 +25,26 @@ body {
     background-attachment: fixed;
 }
 
+nav {
+    background-color: #333; /* Цвет фона для навигации */
+    overflow: hidden; /* Убираем обтекание */
+    position: relative; /* Задаем относительное позиционирование */
+}
+
+nav a {
+    float: left; /* Плавающее позиционирование для ссылок */
+    display: block; /* Задаем блоковый элемент для ссылок */
+    color: white; /* Цвет текста */
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 14px 16px; /* Отступы вокруг текста */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+nav a:hover {
+    background-color: #ddd; /* Цвет фона при наведении */
+    color: black; /* Цвет текста при наведении */
+}
+
 #body-server {
     background-color: #1e1f22;
     background-image: none;
