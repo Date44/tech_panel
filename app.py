@@ -60,8 +60,8 @@ def logout():
 @app.route('/servers', methods=['GET', "POST"])
 @login_required
 async def servers():
-    request1 = json.loads(request.data.decode("utf-8"))
-
+    if request.method == 'POST':
+        request1 = json.loads(request.data.decode("utf-8"))
     return render_template("servers.html")
 
 
