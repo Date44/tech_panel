@@ -46,13 +46,14 @@ def users():
 @role_required('admin')
 def edit_user(user_id):
     user = User.query.get(user_id)
+    roles = list(config.Config.ROLE_HIERARCHY.keys())[0:-1]
     if request.method == 'POST':
         user.username = request.form['username']
         user.role = request.form['role']
         db.session.commit()
         flash("User updated successfully!", "success")
         return redirect(url_for('users'))
-    return render_template('edit_user.html', user=user)
+    return render_template('edit_user.html', user=user, roles=roles)
 
 @app.route('/delete_user/<int:user_id>')
 @login_required
