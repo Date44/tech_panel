@@ -30,7 +30,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(49, 51, 56, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
     overflow: hidden;
     position: fixed;
