@@ -36,7 +36,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     background: rgba(49, 51, 56, 0.5);
-    filter: blur(20px);
+    backdrop-filter: blur(4px);
     overflow: hidden;
     position: fixed;
     top: 20px;
