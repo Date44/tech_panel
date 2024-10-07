@@ -23,7 +23,7 @@
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            const roleSelect = document.getElementById('roleSelect');
+            const roleSelect = document.getElementById('role');
             data.roles.forEach(role => {
                 const option = document.createElement('option');
                 option.value = role;
