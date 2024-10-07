@@ -29,8 +29,7 @@ def role_required(role):
             if current_user.is_authenticated and current_user.role == role:
                 return fn(*args, **kwargs)
             else:
-                flash("You do not have permission to access this page.", "danger")
-                return redirect(url_for('home'))  # Перенаправление на домашнюю страницу
+                return redirect(url_for('index'))  # Перенаправление на домашнюю страницу
         return decorated_view
     return wrapper
 
