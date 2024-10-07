@@ -32,8 +32,9 @@ html.is-changing .transition-container-align-items-center {
 }
 
 .table {
+    min-height: 98px;
     max-height: 300px;
-    height: 98px;
+    height: auto;
     margin: 15px 0px;
     display: grid;
     grid-template-columns: 0fr 0fr 0fr 0fr;
