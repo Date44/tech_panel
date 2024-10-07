@@ -118,8 +118,10 @@ button {
     border: #5b5de3;
     background: #5b5de3;
     color: #fff;
-    width: 416px;
-    height: 44px;
+    min-width: 10px;
+    max-width: 100vw;
+    min-height: 10px;
+    max-height: 100vw;
     font-family: "gg sans";
     font-size: 16px;
     font-weight: 500;
@@ -339,10 +341,8 @@ input:focus {
 }
 
 .button-change {
-    min-width: 48px;
-    max-width: 100vw;
-    min-height: 12px;
-    max-height: 100vw;
+    width: 480px;
+    height: 122px;
     margin-top: 24px;
 }
 
