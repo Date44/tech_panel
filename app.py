@@ -22,27 +22,27 @@ login_manager.init_app(app)
 login_manager.login_message = None
 
 def role_required(role):
-    def wrapper(fn):
-        @wraps(fn)
-        def decorated_view(*args, **kwargs):
-            if current_user.is_authenticated and current_user.role == role:
-                return fn(*args, **kwargs)
-            else:
-                return redirect(url_for('index'))
-        return decorated_view
-    return wrapper
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if not current_user.is_authenticated or not current_user.has_role(role):
+                flash("You do not have permission to access this page.", "danger")
+                return redirect(url_for('index'))  # Переадресация на главную страницу
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
 
 
 @app.route('/users')
 @login_required
-@role_required(['admin', ""])
+@role_required('admin')
 def users():
     all_users = User.query.all()
     return render_template('users.html', users=all_users)
 
 @app.route('/edit_user/<int:user_id>', methods=['GET', 'POST'])
 @login_required
-@role_required(['admin', ""])
+@role_required('admin')
 def edit_user(user_id):
     user = User.query.get(user_id)
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def edit_user(user_id):
 
 @app.route('/delete_user/<int:user_id>')
 @login_required
-@role_required(['admin', ""])
+@role_required('admin')
 def delete_user(user_id):
     user = User.query.get(user_id)
     if user:
@@ -68,7 +68,7 @@ def delete_user(user_id):
 
 @app.route('/add_user', methods=['GET', 'POST'])
 @login_required
-@role_required(['admin', ""])
+@role_required('admin')
 def add_user():
     if request.method == 'POST':
         username = request.form['username']

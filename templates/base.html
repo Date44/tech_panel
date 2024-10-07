@@ -15,6 +15,9 @@
                 {% if current_user.role == 'admin' %}
                     <a href="/users">Admin</a>
                 {% endif %}
+                {% if current_user.role == 'editor' %}
+                    <a href="/users">Admin</a>
+                {% endif %}
             </div>
             <div class="nav-right">
                 <a href="{{ url_for('logout') }}">Logout</a>
