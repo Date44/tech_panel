@@ -1,9 +1,11 @@
 import json
+from functools import wraps
 
-from flask import Flask, render_template, redirect, url_for, flash
-from flask import request, jsonify
+from flask import Flask, render_template
+from flask import request, redirect, url_for, flash
 from flask_cors import CORS
 from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_login import current_user
 
 from forms import LoginForm, RegistrationForm
 from models import db, User
@@ -19,6 +21,18 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 login_manager.login_message = None
+
+def role_required(role):
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
+            if current_user.is_authenticated and current_user.role == role:
+                return fn(*args, **kwargs)
+            else:
+                flash("You do not have permission to access this page.", "danger")
+                return redirect(url_for('home'))  # Перенаправление на домашнюю страницу
+        return decorated_view
+    return wrapper
 
 @login_manager.user_loader
 def load_user(user_id):
