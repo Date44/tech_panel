@@ -122,7 +122,7 @@ def login():
 def admin():
     return render_template("admin.html")
 
-@app.route('/roles', methods=['GET'])
+@app.route('/roles', methods=['POST'])
 @login_required
 @role_required('admin')
 def get_roles():
