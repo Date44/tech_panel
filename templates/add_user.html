@@ -19,7 +19,7 @@
     </form>
 
     <script>
-    fetch('/roles')
+    fetch('http://109.237.99.125:5000/roles')
         .then(response => response.json())
         .then(data => {
             const roleSelect = document.getElementById('roleSelect');
