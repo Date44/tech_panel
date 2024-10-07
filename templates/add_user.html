@@ -22,6 +22,7 @@
     fetch('http://109.237.99.125:5000/roles')
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             const roleSelect = document.getElementById('roleSelect');
             data.roles.forEach(role => {
                 const option = document.createElement('option');
