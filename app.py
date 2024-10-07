@@ -54,20 +54,18 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for(''))
+    return redirect(url_for('/'))
 
 
-@app.route('/servers', methods=['GET'])
+@app.route('/servers', methods=['GET', "POST"])
 @login_required
 async def servers():
+    request1 = json.loads(request.data.decode("utf-8"))
+
     return render_template("servers.html")
 
 
-@app.route('/servers', methods=['POST'])
-def servers1():
-    request1 = json.loads(request.data.decode("utf-8"))
 
-    return jsonify(request1)
 
 
 
