@@ -35,6 +35,10 @@ nav {
     z-index: 1000;
 }
 
+.nav-left, .nav-right {
+    display: flex; /* Используем flexbox для левой и правой части навигации */
+}
+
 
 nav a {
     float: left;
