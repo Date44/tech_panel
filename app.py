@@ -71,7 +71,7 @@ def delete_user(user_id):
 @login_required
 @role_required('admin')
 def add_user():
-    roles = list(config.Config.ROLE_HIERARCHY.keys())[-1:0]
+    roles = list(config.Config.ROLE_HIERARCHY.keys())[0:-1]
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -80,8 +80,6 @@ def add_user():
         new_user = User(username=username, password=password, role=role)
         db.session.add(new_user)
         db.session.commit()
-
-        flash("User added successfully!", "success")
         return redirect(url_for('users'))
 
     return render_template('add_user.html', roles=roles)
