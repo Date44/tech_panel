@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/static/css/base.css">
 </head>
 <body>
+<div id="swup" class="transition-container-align-items-center">
     <nav>
         {% if current_user.is_authenticated %}
             <div class="nav-left">
@@ -41,7 +42,7 @@
         {% endwith %}
         {% block content %}{% endblock %}
     </div>
-
+</div>
 <script type="module">
     import Swup from 'https://unpkg.com/swup@4?module';
     const swup = new Swup();
