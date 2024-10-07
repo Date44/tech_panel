@@ -26,12 +26,12 @@ body {
     padding-top: 50px;
 }
 
-td, th {
+td, th, lable {
     color: white;
     text-align: center;
 }
 
-lable {
+input {
     min-width: 10px;
     max-width: 100vw;
     min-height: 10px;
