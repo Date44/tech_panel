@@ -19,19 +19,24 @@
     </form>
 
     <script>
-    fetch('http://109.237.99.125:5000/roles')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            const roleSelect = document.getElementById('role');
-            data.roles.forEach(role => {
-                const option = document.createElement('option');
-                option.value = role;
-                option.textContent = role.charAt(0).toUpperCase() + role.slice(1);
-                roleSelect.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error fetching roles:', error));
+    response = fetch('http://109.237.99.125:5000/roles', {
+        method: 'GET',
+    }).then(res => res.json())
+    console.log(response)
+
+    {#fetch('http://109.237.99.125:5000/roles')#}
+    {#    .then(response => response.json())#}
+    {#    .then(data => {#}
+    {#        console.log(data)#}
+    {#        const roleSelect = document.getElementById('role');#}
+    {#        data.roles.forEach(role => {#}
+    {#            const option = document.createElement('option');#}
+    {#            option.value = role;#}
+    {#            option.textContent = role.charAt(0).toUpperCase() + role.slice(1);#}
+    {#            roleSelect.appendChild(option);#}
+    {#        });#}
+    {#    })#}
+    {#    .catch(error => console.error('Error fetching roles:', error));#}
     </script>
 {% endblock %}
 
