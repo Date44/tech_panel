@@ -126,7 +126,7 @@ def admin():
 @login_required
 @role_required('admin')
 def get_roles():
-    roles =  config.Config.ROLE_HIERARCHY
+    roles =  config.Config.ROLE_HIERARCHY.keys()
     print(roles)
     return jsonify(roles=roles)
 
