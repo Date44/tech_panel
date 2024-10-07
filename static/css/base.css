@@ -43,7 +43,7 @@ html.is-changing .transition-container-align-items-center {
 
 .table1 {
     margin: 0px 30px;
-    height: 20px;
+    max-height: 20px;
 }
 
 #User_action {
