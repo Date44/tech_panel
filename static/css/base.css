@@ -30,14 +30,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #313338;
+    background: rgba(49, 51, 56, 0.8); /* Полу-прозрачный цвет фона */
+    backdrop-filter: blur(8px); /* Эффект размытия */
     overflow: hidden;
     position: fixed;
     top: 20px;
     min-width: 480px;
     max-width: 100%;
-    min-height: 10px;
-    max-height: 100%;
+    min-height: 40px; /* Увеличим высоту для лучшей видимости */
     z-index: 1000;
     padding: 0 25px;
     border-radius: 5px;
@@ -48,21 +48,20 @@ nav {
     display: flex;
 }
 
-
 nav a {
-    float: left;
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 16px; /* Уменьшены отступы для меньшей высоты */
     text-decoration: none;
 }
 
 nav a:hover {
     border-radius: 5px;
-    background-color: #5b5b5b44;
+    background-color: rgba(91, 91, 91, 0.4); /* Полу-прозрачный цвет фона при наведении */
     color: white;
 }
+
 
 #body-server {
     background-color: #1e1f22;
