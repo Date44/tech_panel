@@ -13,10 +13,7 @@
             <div class="nav-left">
                 <a href="/servers">Servers</a>
                 {% if current_user.has_role('admin') %}
-                    <a href="/users">Admin</a>
-                {% endif %}
-                {% if current_user.has_role('editor') %}
-                    <a href="/users">Admin</a>
+                    <a href="/admin">Admin</a>
                 {% endif %}
             </div>
             <div class="nav-right">
