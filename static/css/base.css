@@ -17,7 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'gg sans';
-    /*background-image: url(/static/background.svg);*/
+    background-image: url(/static/background.svg);
     background-size: 100% 100%;
     background-position: auto center;
     background-repeat: no-repeat;
@@ -36,6 +36,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     background: rgba(49, 51, 56, 0.5);
+    filter: blur(20px);
     overflow: hidden;
     position: fixed;
     top: 20px;
