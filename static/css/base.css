@@ -28,6 +28,8 @@ body {
 
 td {
     color: white;
+    text-align: center;
+    display: flex;
 }
 
 nav {
