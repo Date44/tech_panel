@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+</head>
+<body>
+    <h1>Edit User: {{ user.username }}</h1>
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" value="{{ user.username }}" required>
+
+        <label for="role">Role:</label>
+        <select name="role">
+            <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+            <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+            <option value="editor" {% if user.role == 'editor' %}selected{% endif %}>Editor</option>
+        </select>
+
+        <button type="submit">Update User</button>
+    </form>
+</body>
+</html>

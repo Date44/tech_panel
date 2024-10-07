@@ -33,6 +33,59 @@ def role_required(role):
         return decorated_view
     return wrapper
 
+
+@app.route('/users')
+@login_required
+@role_required(['admin'])  # Только для администраторов
+def users():
+    all_users = User.query.all()
+    return render_template('users.html', users=all_users)
+
+@app.route('/edit_user/<int:user_id>', methods=['GET', 'POST'])
+@login_required
+@role_required(['admin'])  # Только для администраторов
+def edit_user(user_id):
+    user = User.query.get(user_id)
+    if request.method == 'POST':
+        user.username = request.form['username']
+        user.role = request.form['role']
+        db.session.commit()
+        flash("User updated successfully!", "success")
+        return redirect(url_for('users'))
+    return render_template('edit_user.html', user=user)
+
+@app.route('/delete_user/<int:user_id>')
+@login_required
+@role_required(['admin'])  # Только для администраторов
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        flash("User deleted successfully!", "success")
+    else:
+        flash("User not found.", "danger")
+    return redirect(url_for('users'))
+
+@app.route('/add_user', methods=['GET', 'POST'])
+@login_required
+@role_required(['admin'])  # Только для администраторов
+def add_user():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        role = request.form['role']
+
+        new_user = User(username=username, password=password, role=role)
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash("User added successfully!", "success")
+        return redirect(url_for('users'))
+
+    return render_template('add_user.html')
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
