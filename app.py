@@ -7,6 +7,7 @@ from flask_cors import CORS
 from flask_login import LoginManager, login_user, logout_user, login_required
 from flask_login import current_user
 
+import config
 from forms import LoginForm, RegistrationForm
 from models import db, User
 
@@ -125,7 +126,7 @@ def admin():
 @login_required
 @role_required('admin')
 def get_roles():
-    roles =  app.config["ROLE_HIERARCHY"]
+    roles =  config.Config.ROLE_HIERARCHY
     print(roles)
     return jsonify(roles=roles)
 

@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
 import app
+import config
 
 db = SQLAlchemy()
 
@@ -12,4 +13,4 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(50), default='user')
 
     def has_role(self, role):
-        return app.config["ROLE_HIERARCHY"].get(self.role, 0) >= app.config["ROLE_HIERARCHY"].get(role, 0)
+        return config.Config.ROLE_HIERARCHY.get(self.role, 0) >= config.Config.ROLE_HIERARCHY.get(role, 0)
