@@ -18,4 +18,3 @@ class User(db.Model, UserMixin):
 
     def has_role(self, role):
         return ROLE_HIERARCHY.get(self.role, 0) >= ROLE_HIERARCHY.get(role, 0)
-    
