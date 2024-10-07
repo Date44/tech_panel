@@ -216,11 +216,6 @@ input:focus {
     flex-direction: column;
 }
 
-.transition-container-align-items-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .form-container form {
     display: flex;
