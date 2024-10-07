@@ -38,7 +38,7 @@ html.is-changing .transition-container-align-items-center {
     grid-template-columns: 0fr 0fr 0fr 0fr;
     grid-gap: 7px;
     color: #fff;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 .table1 {
