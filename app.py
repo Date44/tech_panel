@@ -120,7 +120,7 @@ def login():
 @app.route('/admin')
 @role_required('admin')  # Только для администраторов
 def admin():
-    return "Welcome to the admin page!"
+    return render_template("admin.html")
 
 
 @app.route('/logout')
