@@ -26,7 +26,16 @@ body {
     padding-top: 50px;
 }
 
-td, th, label {
+td, th {
+    color: white;
+    text-align: center;
+}
+
+lable {
+    min-width: 10px;
+    max-width: 100vw;
+    min-height: 10px;
+    max-height: 100vw;
     color: white;
     text-align: center;
 }
