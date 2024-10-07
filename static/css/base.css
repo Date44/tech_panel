@@ -34,7 +34,10 @@ nav {
     overflow: hidden;
     position: fixed;
     top: 20px;
-    width: 30%;
+    min-width: 480px;
+    max-width: 100%;
+    min-height: 408px;
+    max-height: 100%;
     z-index: 1000;
     padding: 10px 20px;
     border-radius: 5px;
