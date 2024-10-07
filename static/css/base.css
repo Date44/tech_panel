@@ -16,33 +16,38 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     font-family: 'gg sans';
     background-image: url(/static/background.svg);
     background-size: 100% 100%;
     background-position: auto center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    padding-top: 50px;
 }
 
 nav {
-    background-color: #333; /* Цвет фона для навигации */
-    overflow: hidden; /* Убираем обтекание */
-    position: relative; /* Задаем относительное позиционирование */
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
+
 nav a {
-    float: left; /* Плавающее позиционирование для ссылок */
-    display: block; /* Задаем блоковый элемент для ссылок */
-    color: white; /* Цвет текста */
-    text-align: center; /* Выравнивание текста по центру */
-    padding: 14px 16px; /* Отступы вокруг текста */
-    text-decoration: none; /* Убираем подчеркивание */
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 nav a:hover {
-    background-color: #ddd; /* Цвет фона при наведении */
-    color: black; /* Цвет текста при наведении */
+    background-color: #ddd;
+    color: black;
 }
 
 #body-server {
