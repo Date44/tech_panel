@@ -52,14 +52,15 @@ nav {
 nav a {
     float: left;
     display: block;
-    color: #313338;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 nav a:hover {
-    background-color: #ddd;
+    border-radius: 5px;
+    background-color: #313338;
     color: black;
 }
 
