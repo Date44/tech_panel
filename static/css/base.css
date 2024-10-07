@@ -27,11 +27,16 @@ html.is-changing .transition-container-align-items-center {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
     }
 
 .table {
     display: grid;
     grid-template-columns: 0fr 0fr 0fr 0fr;
+}
+
+#User_action {
+    width: 4vw;
 }
 
 body {
