@@ -26,6 +26,10 @@ body {
     padding-top: 50px;
 }
 
+td {
+    color: white;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
