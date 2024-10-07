@@ -71,6 +71,7 @@ def delete_user(user_id):
 @login_required
 @role_required('admin')
 def add_user():
+    roles = list(config.Config.ROLE_HIERARCHY.keys())
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -83,7 +84,7 @@ def add_user():
         flash("User added successfully!", "success")
         return redirect(url_for('users'))
 
-    return render_template('add_user.html')
+    return render_template('add_user.html', roles=roles)
 
 
 @login_manager.user_loader
@@ -121,13 +122,6 @@ def login():
 @role_required('admin')
 def admin():
     return render_template("admin.html")
-
-@app.route('/roles', methods=['POST'])
-@login_required
-def get_roles():
-    roles =  list(config.Config.ROLE_HIERARCHY.keys())
-    print(roles)
-    return jsonify({"data": roles})
 
 @app.route('/logout')
 @login_required
