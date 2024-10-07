@@ -126,6 +126,7 @@ def admin():
 @role_required('admin')
 def get_roles():
     roles =  app.config["ROLE_HIERARCHY"]
+    print(roles)
     return jsonify(roles=roles)
 
 @app.route('/logout')
