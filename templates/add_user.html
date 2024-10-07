@@ -22,7 +22,7 @@
     response = fetch('http://109.237.99.125:5000/roles', {
         method: 'POST',
     }).then(res => res.json())
-    console.log(response)
+    console.log(response.data)
 
     {#fetch('http://109.237.99.125:5000/roles')#}
     {#    .then(response => response.json())#}
