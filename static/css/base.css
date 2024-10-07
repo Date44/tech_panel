@@ -27,12 +27,16 @@ body {
 }
 
 nav {
+    display: flex; /* Используем flexbox для навигационной панели */
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    align-items: center; /* Центрируем элементы по вертикали */
     background-color: #333;
     overflow: hidden;
     position: fixed;
     top: 30px;
     width: 30%;
     z-index: 1000;
+    padding: 10px 20px; /* Отступы для навигационной панели */
 }
 
 .nav-left, .nav-right {
