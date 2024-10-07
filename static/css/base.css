@@ -23,6 +23,17 @@ html.is-changing .transition-container-align-items-center {
     to { opacity: 0; }
 }
 
+ .table_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+.table {
+    display: grid;
+    grid-template-columns: 0fr 0fr 0fr 0fr;
+}
+
 body {
     height: 100vh;
     margin: 0;
