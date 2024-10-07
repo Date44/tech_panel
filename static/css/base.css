@@ -9,6 +9,20 @@
     display: none;
   }
 
+html.is-changing .transition-container-align-items-center {
+    transition: opacity 0.25s;
+    opacity: 1;
+  }
+
+  html.is-animating .transition-container-align-items-center {
+    opacity: 0;
+  }
+
+@keyframes fade {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
 body {
     height: 100vh;
     margin: 0;
