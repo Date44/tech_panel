@@ -13,7 +13,6 @@ body {
     height: 100vh;
     margin: 0;
     display: flex;
-    position: absolute;
     flex-direction: column;
     justify-content: center;
     align-items: center;
