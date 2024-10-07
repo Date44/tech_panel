@@ -19,7 +19,6 @@ with app.app_context():
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'
 login_manager.login_message = None
 
 def role_required(role):
@@ -29,21 +28,21 @@ def role_required(role):
             if current_user.is_authenticated and current_user.role == role:
                 return fn(*args, **kwargs)
             else:
-                return redirect(url_for('index'))  # Перенаправление на домашнюю страницу
+                return redirect(url_for('index'))
         return decorated_view
     return wrapper
 
 
 @app.route('/users')
 @login_required
-@role_required(['admin'])  # Только для администраторов
+@role_required(['admin'])
 def users():
     all_users = User.query.all()
     return render_template('users.html', users=all_users)
 
 @app.route('/edit_user/<int:user_id>', methods=['GET', 'POST'])
 @login_required
-@role_required(['admin'])  # Только для администраторов
+@role_required(['admin'])
 def edit_user(user_id):
     user = User.query.get(user_id)
     if request.method == 'POST':
@@ -56,7 +55,7 @@ def edit_user(user_id):
 
 @app.route('/delete_user/<int:user_id>')
 @login_required
-@role_required(['admin'])  # Только для администраторов
+@role_required(['admin'])
 def delete_user(user_id):
     user = User.query.get(user_id)
     if user:
@@ -69,7 +68,7 @@ def delete_user(user_id):
 
 @app.route('/add_user', methods=['GET', 'POST'])
 @login_required
-@role_required(['admin'])  # Только для администраторов
+@role_required(['admin'])
 def add_user():
     if request.method == 'POST':
         username = request.form['username']
@@ -118,7 +117,7 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/admin')
-@role_required('admin')  # Только для администраторов
+@role_required('admin')
 def admin():
     return render_template("admin.html")
 
