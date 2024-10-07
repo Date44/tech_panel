@@ -71,7 +71,7 @@ def delete_user(user_id):
 @login_required
 @role_required('admin')
 def add_user():
-    roles = list(config.Config.ROLE_HIERARCHY.keys())
+    roles = list(config.Config.ROLE_HIERARCHY.keys())[-1:0]
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
