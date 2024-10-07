@@ -1,7 +1,7 @@
 import json
 from functools import wraps
 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask import request, redirect, url_for, flash
 from flask_cors import CORS
 from flask_login import LoginManager, login_user, logout_user, login_required
@@ -27,7 +27,7 @@ def role_required(role):
         def decorated_function(*args, **kwargs):
             if not current_user.is_authenticated or not current_user.has_role(role):
                 flash("You do not have permission to access this page.", "danger")
-                return redirect(url_for('index'))  # Переадресация на главную страницу
+                return redirect(url_for('index'))
             return f(*args, **kwargs)
         return decorated_function
     return decorator
@@ -121,6 +121,12 @@ def login():
 def admin():
     return render_template("admin.html")
 
+@app.route('/roles', methods=['GET'])
+@login_required
+@role_required('admin')
+def get_roles():
+    roles =  app.config["ROLE_HIERARCHY"]
+    return jsonify(roles=roles)
 
 @app.route('/logout')
 @login_required

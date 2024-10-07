@@ -10,11 +10,28 @@
 
         <label for="role">Role:</label>
         <select name="role">
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-            <option value="editor">Editor</option>
+            {% for role in roles %}
+                <option value="{{ role }}">{{ role.capitalize() }}</option>
+            {% endfor %}
         </select>
 
         <button type="submit">Add User</button>
     </form>
+
+    <script>
+    fetch('/roles')
+        .then(response => response.json())
+        .then(data => {
+            const roleSelect = document.getElementById('roleSelect');
+            data.roles.forEach(role => {
+                const option = document.createElement('option');
+                option.value = role;
+                option.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+                roleSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching roles:', error));
+    </script>
 {% endblock %}
+
+
