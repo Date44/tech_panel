@@ -26,7 +26,7 @@ body {
     padding-top: 50px;
 }
 
-td, th {
+td, th, label {
     color: white;
     text-align: center;
 }
@@ -135,7 +135,7 @@ button:active {
 }
 
 input:focus {
-    color: #fff;
+    color: black;
     outline-width: 0;
 }
 
