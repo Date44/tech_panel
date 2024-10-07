@@ -128,7 +128,7 @@ def admin():
 def get_roles():
     roles =  config.Config.ROLE_HIERARCHY.keys()
     print(roles)
-    return {"data": roles}
+    return jsonify({"data": roles})
 
 @app.route('/logout')
 @login_required
