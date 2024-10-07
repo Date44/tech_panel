@@ -32,23 +32,20 @@ html.is-changing .transition-container-align-items-center {
 }
 
 .table {
-    height: 300px;
     margin: 15px 0px;
     display: grid;
     grid-template-columns: 0fr 0fr 0fr 0fr;
     grid-gap: 7px;
     color: #fff;
-    /*overflow: auto;*/
+    overflow-y: auto;
 }
 
 .table1 {
     margin: 0px 30px;
-    max-height: 20px;
 }
 
 #User_action {
     width: 70px;
-
 }
 
 body {
