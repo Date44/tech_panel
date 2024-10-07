@@ -132,7 +132,7 @@ def logout():
 @app.route('/servers', methods=['GET', "POST"])
 @login_required
 @role_required('editor')
-async def servers():
+def servers():
     if request.method == 'POST':
         request1 = json.loads(request.data.decode("utf-8"))
     return render_template("servers.html")
