@@ -124,7 +124,6 @@ def admin():
 
 @app.route('/roles', methods=['POST'])
 @login_required
-@role_required('admin')
 def get_roles():
     roles =  config.Config.ROLE_HIERARCHY.keys()
     print(roles)
