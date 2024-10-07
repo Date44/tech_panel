@@ -30,7 +30,7 @@ nav {
     background-color: #333;
     overflow: hidden;
     position: fixed;
-    top: 30;
+    top: 30px;
     width: 30%;
     z-index: 1000;
 }
