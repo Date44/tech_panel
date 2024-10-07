@@ -23,12 +23,13 @@ html.is-changing .transition-container-align-items-center {
     to { opacity: 0; }
 }
 
- .table_wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+.table_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    align-content: flex-start;
+}
 
 .table {
     display: grid;
