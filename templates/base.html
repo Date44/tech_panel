@@ -11,7 +11,7 @@
     <nav>
         {% if current_user.is_authenticated %}
             <div class="nav-left">
-                <a href="#">Servers</a>
+                <a href="/servers">Servers</a>
             </div>
             <div class="nav-right">
                 <a href="{{ url_for('logout') }}">Logout</a>
