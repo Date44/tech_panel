@@ -34,6 +34,7 @@ html.is-changing .transition-container-align-items-center {
 .table {
     display: grid;
     grid-template-columns: 0fr 0fr 0fr 0fr;
+    grid-gap: 7px;
 }
 
 .table1 {
