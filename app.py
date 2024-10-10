@@ -89,6 +89,9 @@ def add_user():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+@app.route('/cs', methods=['GET'])
+async def indext():
+    return render_template("constructor.html")
 
 @app.route('/', methods=['GET'])
 async def index():
