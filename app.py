@@ -90,11 +90,11 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 @app.route('/cs', methods=['GET'])
-async def indext():
+def indext():
     return render_template("constructor.html")
 
 @app.route('/', methods=['GET'])
-async def index():
+def index():
     return render_template("index.html")
 
 @app.route('/register', methods=['GET', 'POST'])
