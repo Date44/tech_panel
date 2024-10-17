@@ -227,8 +227,8 @@ input:focus {
     border-radius: 5px;
     position: absolute;
     overflow: hidden;
-    min-width: 480px;
-    min-height: 408px;
+    min-width: 22vw;
+    min-height: 29vh;
     padding: 32px;
 
 
